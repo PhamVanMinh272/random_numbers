@@ -25,8 +25,21 @@ def check_challenge(path):
         row = input(f"Row {index+1}: ")
         if len(row)<40+39*2:
             row = '  '.join(row)
-        if row==line:
-           print('Correct') 
+        if len(row)==len(line):
+            if row==line:
+                print('Correct')
+            else:
+                error_index = ''
+                for i, v in enumerate(line):
+                    if v != row[i]:
+                        error_index += '!'
+                    else:
+                        error_index += ' '
+                
+                print('Wrong')
+                print('Correct awnser:', line)
+                print('               ', error_index)
+                print('Your awnser:   ', row)
         else:
             print('Wrong')
             print('Correct awnser:', line)
