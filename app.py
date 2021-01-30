@@ -82,8 +82,10 @@ def generate_challenge_data(n: int, len_row: int=40) -> list:
 
 
 def start_challenge():
+    # clear old data
     clear_challenge(CHALLENGE_DATA_PATH)
     n = input("Number of numbers (Default 80): ")
+    # get number of numbers
     if n == '':
         n=80
     else:
@@ -91,7 +93,11 @@ def start_challenge():
             n = int(n)
         except:
             print('Wrong format. Use default 80 numbers.')
-
+    # wait time to start
+    for i in range(1, 3):
+        print(i)
+        time.sleep(1)
+    # generate data challenge and show
     challenge_data = generate_challenge_data(n)
     print('')
     for row in challenge_data:
@@ -99,6 +105,7 @@ def start_challenge():
         print('')
     start = datetime.now()
     input()
+    # Recall
     system('clear')
     print('Time =', datetime.now()-start)
     start = datetime.now()
