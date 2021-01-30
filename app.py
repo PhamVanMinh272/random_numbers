@@ -21,8 +21,9 @@ def check_challenge(path):
     with open(path, 'r') as f:
         data = f.readlines()
     for index, line in enumerate(data):
+        line = line[:-3]
         row = input(f"Row {index+1}: ")
-        if len(row)<40*3:
+        if len(row)<40+39*2:
             row = '  '.join(row)
         if row==line:
            print('Correct') 
