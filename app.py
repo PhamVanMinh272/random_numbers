@@ -17,10 +17,21 @@ def read_challenge(path):
         data = f.read()
         print(data)
 
+def caculate_row_score(error_pointer: str)->int:
+    errors = error_pointer.count('!')
+    score = 0
+    if errors==0:
+        score = 40
+    elif errors==1:
+        score = 20
+    return score
+
 def check_challenge(path):
     with open(path, 'r') as f:
         data = f.readlines()
+    total_score = 0
     for index, line in enumerate(data):
+        error_index = ''
         line = line[:-3]
         row = input(f"Row {index+1}: ")
         if len(row)<40+39*2:
@@ -29,7 +40,6 @@ def check_challenge(path):
             if row==line:
                 print('Correct')
             else:
-                error_index = ''
                 for i, v in enumerate(line):
                     if v != row[i]:
                         error_index += '!'
@@ -41,9 +51,14 @@ def check_challenge(path):
                 print('               ', error_index)
                 print('Your awnser:   ', row)
         else:
+            error_index = '!!!'
             print('Wrong')
             print('Correct awnser:', line)
             print('Your awnser:   ', row)
+        row_score = caculate_row_score(error_index)
+        print('Row score =', row_score)
+        total_score += row_score
+    print('Total score =', total_score)
 
 def clear_challenge(path):
     with open(path, 'w') as f:
