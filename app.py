@@ -84,7 +84,7 @@ def generate_challenge_data(n: int, len_row: int=40) -> list:
 def start_challenge():
     # clear old data
     clear_challenge(CHALLENGE_DATA_PATH)
-    n = input("Number of numbers (Default 100): ")
+    n = input("Number of numbers (Default 150): ")
     # get number of numbers
     if n == '':
         n=100
@@ -92,7 +92,7 @@ def start_challenge():
         try:
             n = int(n)
         except:
-            print('Wrong format. Use default 100 numbers.')
+            print('Wrong format. Use default 150 numbers.')
     # wait time to start
     for i in range(1, 3):
         print(i)
